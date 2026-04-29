@@ -20,6 +20,15 @@
       "css": ["popup.css"]
     }
   ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "images/slapper.mp4",
+        "images/slapper.gif"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "icons": {
     "16": "images/priest-16.png",
     "48": "images/priest-48.png",

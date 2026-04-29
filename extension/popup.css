@@ -40,8 +40,9 @@
 }
 
 .moral-media-element {
-  max-width: 90%;
-  max-height: 90%;
+  width: 95%;
+  height: 95%;
+  object-fit: contain;
   border-radius: 18px;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
 }

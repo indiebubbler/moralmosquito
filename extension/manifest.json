@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Moral Mosquito - Facebook Reminder",
+  "version": "1.0",
+  "description": "Shows moral slogans and wisdom when you visit Facebook",
+  "permissions": ["scripting", "activeTab"],
+  "host_permissions": [
+    "*://facebook.com/*",
+    "*://www.facebook.com/*",
+    "*://m.facebook.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://facebook.com/*",
+        "*://www.facebook.com/*",
+        "*://m.facebook.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["popup.css"]
+    }
+  ],
+  "icons": {
+    "16": "images/priest-16.png",
+    "48": "images/priest-48.png",
+    "128": "images/priest-128.png"
+  }
+}

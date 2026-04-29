@@ -28,6 +28,28 @@
   animation: moral-fade-out 0.3s ease-in-out forwards;
 }
 
+#moral-gif-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 1000000;
+  animation: moral-fade-in 0.3s ease-in-out;
+}
+
+.moral-gif-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 18px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+}
+
+#moral-gif-overlay.moral-fade-out {
+  animation: moral-fade-out 0.3s ease-in-out forwards;
+}
+
 @keyframes moral-fade-out {
   from {
     opacity: 1;

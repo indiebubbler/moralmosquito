@@ -86,7 +86,7 @@ function createPopup() {
     <div class="moral-popup-container">
       <button class="moral-close-btn" id="moral-close">×</button>
       <div class="moral-content">
-        <div class="moral-priest-icon">⚠️</div>
+        <div class="moral-priest-icon">👨‍⚖️</div>
         <h2 class="moral-title">${ui.title}</h2>
         <p class="moral-slogan">${getRandomSlogan()}</p>
         <button class="moral-next-btn" id="moral-next">${ui.next}</button>
@@ -114,8 +114,35 @@ function showPopup() {
 
   // Add event listeners
   document.getElementById('moral-close').addEventListener('click', closePopup);
-  document.getElementById('moral-continue').addEventListener('click', closePopup);
+  document.getElementById('moral-continue').addEventListener('click', handleContinue);
   document.getElementById('moral-next').addEventListener('click', changeSlogan);
+}
+
+function handleContinue() {
+  showSlapperGif();
+  closePopup();
+}
+
+function showSlapperGif() {
+  if (document.getElementById('moral-gif-overlay')) {
+    return;
+  }
+
+  const overlay = document.createElement('div');
+  overlay.id = 'moral-gif-overlay';
+
+  const gif = document.createElement('img');
+  gif.src = chrome.runtime.getURL('images/slapper.gif');
+  gif.alt = 'Slapper animation';
+  gif.className = 'moral-gif-image';
+  overlay.appendChild(gif);
+
+  document.body.appendChild(overlay);
+
+  setTimeout(() => {
+    overlay.classList.add('moral-fade-out');
+    setTimeout(() => overlay.remove(), 300);
+  }, 2200);
 }
 
 // Close popup

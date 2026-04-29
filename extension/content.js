@@ -124,25 +124,39 @@ function handleContinue() {
 }
 
 function showSlapperGif() {
-  if (document.getElementById('moral-gif-overlay')) {
+  if (document.getElementById('moral-media-overlay')) {
     return;
   }
 
   const overlay = document.createElement('div');
-  overlay.id = 'moral-gif-overlay';
+  overlay.id = 'moral-media-overlay';
 
-  const gif = document.createElement('img');
-  gif.src = chrome.runtime.getURL('images/slapper.gif');
-  gif.alt = 'Slapper animation';
-  gif.className = 'moral-gif-image';
-  overlay.appendChild(gif);
+  const video = document.createElement('video');
+  video.src = chrome.runtime.getURL('images/slapper.mp4');
+  video.className = 'moral-media-element';
+  video.muted = true;
+  video.autoplay = true;
+  video.playsInline = true;
+  video.loop = false;
+  video.preload = 'auto';
+  video.setAttribute('aria-hidden', 'true');
 
-  document.body.appendChild(overlay);
-
-  setTimeout(() => {
+  video.addEventListener('ended', () => {
     overlay.classList.add('moral-fade-out');
     setTimeout(() => overlay.remove(), 300);
-  }, 2200);
+  });
+
+  video.addEventListener('loadeddata', () => {
+    video.play().catch(() => {
+      setTimeout(() => {
+        overlay.classList.add('moral-fade-out');
+        setTimeout(() => overlay.remove(), 300);
+      }, 2200);
+    });
+  });
+
+  overlay.appendChild(video);
+  document.body.appendChild(overlay);
 }
 
 // Close popup

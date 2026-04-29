@@ -28,7 +28,7 @@
   animation: moral-fade-out 0.3s ease-in-out forwards;
 }
 
-#moral-gif-overlay {
+#moral-media-overlay {
   position: fixed;
   inset: 0;
   display: flex;
@@ -39,14 +39,14 @@
   animation: moral-fade-in 0.3s ease-in-out;
 }
 
-.moral-gif-image {
+.moral-media-element {
   max-width: 90%;
   max-height: 90%;
   border-radius: 18px;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
 }
 
-#moral-gif-overlay.moral-fade-out {
+#moral-media-overlay.moral-fade-out {
   animation: moral-fade-out 0.3s ease-in-out forwards;
 }
 
